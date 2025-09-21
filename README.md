@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 電脳名刺 (Cyber Business Card)
 
-## Getting Started
+## 概要 (Overview)
 
-First, run the development server:
+これは、私の技術力、思考、そして人柄を世界に発信する、最強の「電脳名刺」となるポートフォリオサイトです。
+日々の学習の軌跡を記録し、就職活動や共同研究の機会に繋げることを目的としています。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 主な機能 (Features)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 1. 自己紹介 (About Me)
+サイトの顔となるメインページ。私の経歴、スキルセット、そして「AIと共に未来を創造する」という哲学を、洗練されたアニメーション付きのデザインで表現します。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. ブログ (Blog)
+学習記録、技術的な考察、読書記録などを通じて、私の知識と探求の軌跡を発信する場所です。
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **実装方針:**
+    - **案A:** 記事の投稿・編集・削除ができる、フルスクラッチの管理システムを構築。
+    - **案B:** 研究記録である `Jupyter Book` をサイトに直接統合し、研究者としての活動をリアルタイムで発信する。
 
-## Learn More
+> **ありすのメモ:** B案はすごく面白いと思う！ Jupyter Bookをそのまま載せるのは、あなたが「研究者」であることを示す、最高のデモンストレーションになるね。
 
-To learn more about Next.js, take a look at the following resources:
+### 3. プロジェクト展示 (Showcase)
+これまで開発してきたプロジェクトを展示するポートフォリオです。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **掲載内容:** 『皆の秘密基地』や『A.N.C.』などのWebアプリケーション、学校の研究課題などを掲載します。
+- **特殊要件:** PPTX形式の資料をブラウザ上で直接閲覧できる機能を実装します。（※PDF変換や画像カルーセルなどの代替案も検討）
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. 問い合わせフォーム (Contact)
+外部からの仕事の依頼や共同研究の提案などを受け付けるためのフォームです。送信された内容は、専用の管理画面で安全に管理します。
 
-## Deploy on Vercel
+## 技術スタック (Tech Stack)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **フロントエンド:** Next.js, TypeScript, Tailwind CSS
+- **バックエンド:** Node.js, TypeScript
+- **データベース:** PostgreSQL
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## セットアップ (Getting Started)
+
+1. **リポジトリをクローン:**
+   ```bash
+   git clone [https://github.com/your-username/denno-meishi.git](https://github.com/your-username/denno-meishi.git)
+   cd denno-meishi
