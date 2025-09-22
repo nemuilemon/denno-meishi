@@ -59,7 +59,7 @@ export default function ContactForm() {
     return (
       <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
         <h3 className="text-green-800 font-semibold mb-2">Thank you!</h3>
-        <p className="text-green-700">Your message has been sent successfully. We'll get back to you soon.</p>
+        <p className="text-green-700">Your message has been sent successfully. We&apos;ll get back to you soon.</p>
         <button
           onClick={() => setIsSuccess(false)}
           className="mt-4 text-green-600 hover:text-green-800 underline"
