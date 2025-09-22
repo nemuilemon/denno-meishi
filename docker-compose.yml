@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:16
+    container_name: denno_meishi_db_container
+    restart: always
+    shm_size: 128mb # パフォーマンス向上のためのおまじないを追加
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Your_Super_Secret_Password
+      - POSTGRES_DB=denno_meishi
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  
+  adminer:
+    image: adminer
+    container_name: denno_meishi_db_adminer
+    restart: always
+    ports:
+      - "8080:8080" # PCの8080番ポートをAdminerにつなぐ
