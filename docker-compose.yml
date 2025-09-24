@@ -2,7 +2,7 @@ services:
   db:
     image: postgres:16
     container_name: denno_meishi_db_container
-    restart: always
+    restart: "no"
     shm_size: 128mb # パフォーマンス向上のためのおまじないを追加
     environment:
       - POSTGRES_USER=postgres
@@ -17,6 +17,6 @@ services:
   adminer:
     image: adminer
     container_name: denno_meishi_db_adminer
-    restart: always
+    restart: "no"
     ports:
       - "8080:8080" # PCの8080番ポートをAdminerにつなぐ

@@ -1,37 +1,122 @@
+'use client';
+
+import { useState } from 'react';
+import Image from 'next/image';
+
+type Project = {
+  id: string;
+  title: string;
+  description: string;
+  thumbnailUrl: string;
+  pdfUrl: string | null;
+  tags: string[];
+};
+
+const projects: Project[] = [
+  {
+    id: 'minna-no-himitsukichi',
+    title: 'Webアプリケーション『皆の秘密基地』',
+    description: '企画からインフラ構築まで、フルスタック開発の全工程を一人で完遂したライフログ・アプリケーション。',
+    thumbnailUrl: '/projects/minna-no-himitsukichi/thumbnail.png',
+    pdfUrl: '/projects/minna-no-himitsukichi/presentation.pdf',
+    tags: ['React', 'Node.js', 'PostgreSQL', 'Docker', 'VPS']
+  },
+  {
+    id: 'a-n-c',
+    title: 'ナレッジエンジン『A.N.C.』',
+    description: '私（ありす）との対話ログを知識資産として活用するために開発中の、あなただけの「第二の脳」。',
+    thumbnailUrl: '/projects/anc/thumbnail.png',
+    pdfUrl: null,
+    tags: ['Python', 'Flet', 'AI', 'デスクトップアプリ']
+  }
+];
+
 export default function Showcase() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
-          <section className="py-20 px-8 max-w-6xl mx-auto">
+    <>
+      <section className="py-20 px-8 max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12">Showcase</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-            <div className="p-6">
-              <h3 className="text-2xl font-semibold mb-3">Webアプリ『皆の秘密基地』</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                ToDo、スケジュール、家計簿を一元管理できるフルスタックWebアプリケーション。企画から設計、開発、そしてDockerを用いた本番環境へのデプロイまで、全て独力で完遂。
-              </p>
-              <div className="flex flex-wrap gap-2 text-sm">
-                <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full">React</span>
-                <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Node.js</span>
-                <span className="bg-pink-100 text-pink-800 px-2 py-1 rounded-full">PostgreSQL</span>
-                <span className="bg-gray-100 text-gray-800 px-2 py-1 rounded-full">Docker</span>
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+              onClick={() => setSelectedProject(project)}
+            >
+              <Image
+                src={project.thumbnailUrl}
+                alt={project.title}
+                width={400}
+                height={192}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-2xl font-semibold mb-3">{project.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2 text-sm">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+          ))}
+        </div>
+      </section>
+
+      {selectedProject && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-gray-800 rounded-lg max-w-4xl w-full max-h-full overflow-auto">
+            <div className="flex justify-between items-center p-6 border-b">
+              <h3 className="text-2xl font-semibold">{selectedProject.title}</h3>
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="text-gray-500 hover:text-gray-700 text-2xl"
+              >
+                ×
+              </button>
+            </div>
             <div className="p-6">
-              <h3 className="text-2xl font-semibold mb-3">ナレッジエンジン『A.N.C.』</h3>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                AIとの対話ログや学習メモを効率的に管理・分析するために開発したデスクトップアプリケーション。MVCモデルに基づいた設計と、AIによる非同期分析機能が特徴。
+                {selectedProject.description}
               </p>
-              <div className="flex flex-wrap gap-2 text-sm">
-                <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full">Python</span>
-                <span className="bg-gray-100 text-gray-800 px-2 py-1 rounded-full">Flet</span>
-                <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">TinyDB</span>
-                <span className="bg-red-100 text-red-800 px-2 py-1 rounded-full">MVC</span>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {selectedProject.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
+              {selectedProject.pdfUrl ? (
+                <div className="border rounded-lg">
+                  <iframe
+                    src={selectedProject.pdfUrl}
+                    width="100%"
+                    height="600"
+                    className="rounded-lg"
+                  />
+                </div>
+              ) : (
+                <div className="text-center py-12 text-gray-500">
+                  資料は現在準備中です
+                </div>
+              )}
             </div>
           </div>
         </div>
-      </section>
+      )}
+    </>
   );
 }
