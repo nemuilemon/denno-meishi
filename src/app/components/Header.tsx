@@ -28,7 +28,9 @@ export default function Header() {
               </li>
               <li>
                 <a
-                  href="#blog"
+                  href="/blog/index.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
                   ブログ
