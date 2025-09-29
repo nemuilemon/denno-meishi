@@ -56,7 +56,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-20 px-8 bg-white dark:bg-gray-800">
+    <section id="contact" className="py-20 px-8 bg-gray-800">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12">お問い合わせ</h2>
 
@@ -76,10 +76,10 @@ export default function ContactForm() {
               </button>
             </div>
           ) : (
-            <div className="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md">
+            <div className="bg-gray-900 p-8 rounded-lg shadow-md">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                     お名前 *
                   </label>
                   <input
@@ -90,13 +90,13 @@ export default function ContactForm() {
                     onChange={handleChange}
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 dark:disabled:bg-gray-800 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors"
+                    className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-700 bg-gray-800 text-gray-100 transition-colors"
                     placeholder="山田 太郎"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                     メールアドレス *
                   </label>
                   <input
@@ -107,13 +107,13 @@ export default function ContactForm() {
                     onChange={handleChange}
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 dark:disabled:bg-gray-800 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors"
+                    className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-700 bg-gray-800 text-gray-100 transition-colors"
                     placeholder="taro.yamada@example.com"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
                     メッセージ *
                   </label>
                   <textarea
@@ -124,7 +124,7 @@ export default function ContactForm() {
                     required
                     disabled={isLoading}
                     rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 dark:disabled:bg-gray-800 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 resize-vertical transition-colors"
+                    className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-700 bg-gray-800 text-gray-100 resize-vertical transition-colors"
                     placeholder="お問い合わせ内容をご記入ください..."
                   />
                 </div>

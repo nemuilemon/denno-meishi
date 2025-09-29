@@ -42,7 +42,7 @@ export default function Showcase() {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+              className="bg-gray-800 rounded-lg shadow-md overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
               onClick={() => setSelectedProject(project)}
             >
               <Image
@@ -54,14 +54,14 @@ export default function Showcase() {
               />
               <div className="p-6">
                 <h3 className="text-2xl font-semibold mb-3">{project.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-gray-300 mb-4">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 text-sm">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full"
+                      className="bg-blue-900 text-blue-300 px-2 py-1 rounded-full"
                     >
                       {tag}
                     </span>
@@ -75,25 +75,25 @@ export default function Showcase() {
 
       {selectedProject && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-gray-800 rounded-lg max-w-4xl w-full max-h-full overflow-auto">
+          <div className="bg-gray-800 rounded-lg max-w-4xl w-full max-h-full overflow-auto">
             <div className="flex justify-between items-center p-6 border-b">
               <h3 className="text-2xl font-semibold">{selectedProject.title}</h3>
               <button
                 onClick={() => setSelectedProject(null)}
-                className="text-gray-500 hover:text-gray-700 text-2xl"
+                className="text-gray-400 hover:text-gray-700 text-2xl"
               >
                 ×
               </button>
             </div>
             <div className="p-6">
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
+              <p className="text-gray-300 mb-4">
                 {selectedProject.description}
               </p>
               <div className="flex flex-wrap gap-2 mb-6">
                 {selectedProject.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm"
+                    className="bg-blue-900 text-blue-300 px-2 py-1 rounded-full text-sm"
                   >
                     {tag}
                   </span>
@@ -109,7 +109,7 @@ export default function Showcase() {
                   />
                 </div>
               ) : (
-                <div className="text-center py-12 text-gray-500">
+                <div className="text-center py-12 text-gray-400">
                   資料は現在準備中です
                 </div>
               )}
