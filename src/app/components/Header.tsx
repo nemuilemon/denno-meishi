@@ -101,9 +101,7 @@ export default function Header() {
               </li>
               <li>
                 <a
-                  href="/blog/index.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#blog"
                   onClick={closeMenu}
                   className="block py-2 text-gray-300 hover:text-blue-400 transition-colors"
                 >
