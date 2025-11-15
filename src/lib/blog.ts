@@ -92,8 +92,13 @@ export async function getPostsByCategory(category: Category): Promise<BlogPost[]
           const fileContents = await fs.readFile(fullPath, 'utf8');
           const { data, content } = matter(fileContents);
 
-          // Extract title from frontmatter or filename
-          const title = data.title || slug.replace(/_/g, ' ');
+          // Extract title from frontmatter, content h1, or filename
+          let title = data.title;
+          if (!title) {
+            // Try to extract first h1 heading from content
+            const h1Match = content.match(/^#\s+(.+)$/m);
+            title = h1Match ? h1Match[1].trim() : slug.replace(/_/g, ' ');
+          }
 
           // Extract date from frontmatter or filename (format: YY-MM-DD_Title)
           const dateMatch = slug.match(/^(\d{2}-\d{2}-\d{2})/);
@@ -134,8 +139,13 @@ export async function getPostBySlug(
     const fileContents = await fs.readFile(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
-    // Extract title from frontmatter or filename
-    const title = data.title || slug.replace(/_/g, ' ');
+    // Extract title from frontmatter, content h1, or filename
+    let title = data.title;
+    if (!title) {
+      // Try to extract first h1 heading from content
+      const h1Match = content.match(/^#\s+(.+)$/m);
+      title = h1Match ? h1Match[1].trim() : slug.replace(/_/g, ' ');
+    }
 
     // Extract date from frontmatter or filename
     const dateMatch = slug.match(/^(\d{2}-\d{2}-\d{2})/);
