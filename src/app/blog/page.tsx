@@ -12,11 +12,13 @@ export default async function BlogPage() {
 
   // Group posts by category
   const categories: Category[] = ['note', 'papers', 'project', 'dialogs'];
-  const postsByCategory = categories.map(category => ({
-    category,
-    displayName: getCategoryDisplayName(category),
-    posts: allPosts.filter(post => post.category === category),
-  }));
+  const postsByCategory = await Promise.all(
+    categories.map(async category => ({
+      category,
+      displayName: await getCategoryDisplayName(category),
+      posts: allPosts.filter(post => post.category === category),
+    }))
+  );
 
   return (
     <div className="min-h-screen bg-black text-white">

@@ -61,7 +61,7 @@ export default async function PostPage({ params }: PostPageProps) {
     notFound();
   }
 
-  const categoryDisplayName = getCategoryDisplayName(category);
+  const categoryDisplayName = await getCategoryDisplayName(category);
 
   return (
     <div className="min-h-screen bg-black text-white">

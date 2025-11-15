@@ -22,11 +22,11 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     };
   }
 
-  const displayName = getCategoryDisplayName(category);
+  const displayName = await getCategoryDisplayName(category);
 
   return {
     title: `${displayName} | Blog`,
-    description: `${displayName} - もうちゃんの研究ノート`,
+    description: `${displayName} - もうちゃんのブログ`,
   };
 }
 
@@ -39,7 +39,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   }
 
   const posts = await getPostsByCategory(category);
-  const displayName = getCategoryDisplayName(category);
+  const displayName = await getCategoryDisplayName(category);
 
   return (
     <div className="min-h-screen bg-black text-white">

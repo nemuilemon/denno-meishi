@@ -58,7 +58,7 @@ export async function getAllPostSlugs(): Promise<{
         const files = await fs.readdir(categoryDir);
 
         return files
-          .filter(file => file.endsWith('.md'))
+          .filter(file => file.endsWith('.md') && !file.startsWith('_'))
           .map(file => ({
             category,
             slug: file.replace(/\.md$/, ''),
@@ -85,7 +85,7 @@ export async function getPostsByCategory(category: Category): Promise<BlogPost[]
 
     const posts = await Promise.all(
       files
-        .filter(file => file.endsWith('.md'))
+        .filter(file => file.endsWith('.md') && !file.startsWith('_'))
         .map(async (file) => {
           const slug = file.replace(/\.md$/, '');
           const fullPath = join(categoryDir, file);
@@ -173,17 +173,39 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 }
 
 /**
- * Get category display name
+ * Get category display name from _index.md file
+ * Reads the first h1 heading from each category's _index.md
  */
-export function getCategoryDisplayName(category: Category): string {
-  const displayNames: Record<Category, string> = {
-    note: 'ノート',
-    papers: '論文読解',
-    project: 'プロジェクト報告',
-    dialogs: '対話記録',
-  };
+export async function getCategoryDisplayName(category: Category): Promise<string> {
+  try {
+    const indexPath = join(BLOG_DIR, category, '_index.md');
+    const fileContents = await fs.readFile(indexPath, 'utf8');
 
-  return displayNames[category];
+    // Extract first h1 heading (# Title)
+    const headingMatch = fileContents.match(/^#\s+(.+)$/m);
+    if (headingMatch) {
+      return headingMatch[1].trim();
+    }
+
+    // Fallback to default names if no heading found
+    const fallbackNames: Record<Category, string> = {
+      note: 'ノート',
+      papers: '論文読解',
+      project: 'プロジェクト報告',
+      dialogs: '対話記録',
+    };
+    return fallbackNames[category];
+  } catch (error) {
+    console.warn(`Warning: Could not read _index.md for category "${category}"`, error);
+    // Fallback to default names
+    const fallbackNames: Record<Category, string> = {
+      note: 'ノート',
+      papers: '論文読解',
+      project: 'プロジェクト報告',
+      dialogs: '対話記録',
+    };
+    return fallbackNames[category];
+  }
 }
 
 /**
