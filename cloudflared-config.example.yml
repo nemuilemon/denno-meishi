@@ -1,0 +1,18 @@
+# Cloudflare Tunnel設定ファイル（テンプレート）
+# 使用方法:
+# 1. このファイルを cloudflared-config.yml にコピー
+# 2. <YOUR_TUNNEL_ID> を実際のTunnel IDに置き換える
+# 3. yourdomain.com を実際のドメインに置き換える
+
+tunnel: <YOUR_TUNNEL_ID>
+credentials-file: /etc/cloudflared/credentials.json
+
+ingress:
+  # メインドメイン
+  - hostname: yourdomain.com
+    service: http://app:3000
+  # wwwサブドメイン
+  - hostname: www.yourdomain.com
+    service: http://app:3000
+  # デフォルトルール（必須）
+  - service: http_status:404

@@ -1,22 +1,81 @@
 services:
+  # PostgreSQLデータベース
   db:
     image: postgres:16
-    container_name: denno_meishi_db_container
-    restart: "no"
-    shm_size: 128mb # パフォーマンス向上のためのおまじないを追加
+    container_name: denno_meishi_db
+    restart: unless-stopped
+    shm_size: 128mb
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=Your_Super_Secret_Password
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-Your_Super_Secret_Password}
       - POSTGRES_DB=denno_meishi
     ports:
       - "5432:5432"
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-  
+    networks:
+      - denno_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Next.jsアプリケーション
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: denno_meishi_app
+    restart: unless-stopped
+    # Cloudflare Tunnel経由でのみアクセス可能にするため、ポートを公開しない
+    # ローカルテスト時のみ以下をアンコメント
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://postgres:${DB_PASSWORD:-Your_Super_Secret_Password}@db:5432/denno_meishi
+      - ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin_password}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - denno_network
+    volumes:
+      - ./prisma:/app/prisma
+
+  # Adminer (開発・デバッグ用)
   adminer:
     image: adminer
-    container_name: denno_meishi_db_adminer
-    restart: "no"
+    container_name: denno_meishi_adminer
+    restart: unless-stopped
     ports:
-      - "8080:8080" # PCの8080番ポートをAdminerにつなぐ
+      - "8080:8080"
+    networks:
+      - denno_network
+    depends_on:
+      - db
+
+  # Cloudflare Tunnel
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: denno_meishi_tunnel
+    restart: unless-stopped
+    command: tunnel --config /etc/cloudflared/config.yml run
+    volumes:
+      - ./cloudflared-config.yml:/etc/cloudflared/config.yml:ro
+      - ${CLOUDFLARED_CREDENTIALS}:/etc/cloudflared/credentials.json:ro
+    networks:
+      - denno_network
+    depends_on:
+      - app
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  denno_network:
+    driver: bridge
