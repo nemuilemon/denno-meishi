@@ -15,7 +15,7 @@ COPY . .
 
 # Prisma クライアントの生成（オフライン環境対応）
 ENV PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING=1
-RUN npx prisma generate || echo "Prisma generate skipped (using @prisma/client from node_modules)"
+RUN npx prisma generate
 
 # Next.jsのプロダクションビルド
 ENV NEXT_TELEMETRY_DISABLED=1
