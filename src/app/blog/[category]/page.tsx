@@ -5,7 +5,6 @@ import {
   getPostsByCategory,
   getCategoryDisplayName,
   isValidCategory,
-  type Category,
 } from '@/lib/blog';
 
 interface CategoryPageProps {
