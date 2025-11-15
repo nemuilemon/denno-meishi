@@ -9,8 +9,8 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=${DB_PASSWORD:-Your_Super_Secret_Password}
       - POSTGRES_DB=denno_meishi
-    ports:
-      - "5432:5432"
+    # ports:
+    #   - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -45,18 +45,6 @@ services:
       - denno_network
     volumes:
       - ./prisma:/app/prisma
-
-  # Adminer (開発・デバッグ用)
-  adminer:
-    image: adminer
-    container_name: denno_meishi_adminer
-    restart: unless-stopped
-    ports:
-      - "8080:8080"
-    networks:
-      - denno_network
-    depends_on:
-      - db
 
   # Cloudflare Tunnel
   cloudflared:
