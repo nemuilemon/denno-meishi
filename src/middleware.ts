@@ -56,7 +56,7 @@ export function middleware(request: NextRequest) {
         });
       }
 
-    } catch (error) {
+    } catch {
       // Base64デコードエラーや不正な認証情報形式の場合
       return new NextResponse('Invalid authentication format', {
         status: 401,

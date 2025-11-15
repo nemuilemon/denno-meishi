@@ -1,6 +1,6 @@
 import { FaPython, FaDocker } from 'react-icons/fa';
 import { BsFileText } from 'react-icons/bs';
-import { SiTypescript, SiNextdotjs, SiPytorch } from 'react-icons/si';
+import { SiTypescript, SiPytorch } from 'react-icons/si';
 import { GrServer } from "react-icons/gr";
 
 export default function Profile() {

@@ -33,11 +33,11 @@
 - **エラーハンドリング**: 適切な日本語エラーメッセージ
 
 ### 📚 ブログコンテンツ (Blog Content)
-- **研究ノート**: AI学習の軌跡をMarkdownで記録 (`src/blog/blog/note/`)
-- **論文読解レポート**: 最新AI論文の要約と分析 (`src/blog/blog/papers/`)
+- **ノート**: 日々の思索をMarkdownで記録 (`src/blog/blog/note/`)
+- **論文読解**: 最新AI論文の要約と分析 (`src/blog/blog/papers/`)
 - **プロジェクト報告**: 開発プロジェクトの完了報告 (`src/blog/blog/project/`)
-- **対話ログ**: AI との対話記録 (`src/blog/blog/dialogs/`)
-- **実装状況**: Next.js App Routerベースのブログシステムを計画中
+- **対話記録**: AI との対話記録 (`src/blog/blog/dialogs/`)
+- **実装状況**: Next.js App Routerベースのブログシステムを実装済み
 
 ### 🐳 Docker デプロイメント
 - **完全コンテナ化**: Docker Compose による一括管理
@@ -73,10 +73,10 @@ src/
 │   └── page.tsx              # ホームページ
 ├── blog/blog/                 # ブログMarkdownソース
 │   ├── intro.md              # はじめに
-│   ├── note/                 # 研究ノート（8記事）
-│   ├── papers/               # 論文読解レポート（6記事）
-│   ├── project/              # プロジェクトレポート（1記事）
-│   └── dialogs/              # 対話ログ（2記事）
+│   ├── note/                 # ノート（8記事）
+│   ├── papers/               # 論文読解（6記事）
+│   ├── project/              # プロジェクト報告（1記事）
+│   └── dialogs/              # 対話記録（2記事）
 ├── lib/                       # ユーティリティ関数
 └── generated/                 # Prisma生成ファイル
 ```
@@ -387,11 +387,11 @@ This is the ultimate "cyber business card" portfolio website to showcase my tech
 - **Error Handling**: Appropriate Japanese error messages
 
 ### 📚 Blog Content
-- **Research Notes**: AI learning journey in Markdown (`src/blog/blog/note/`)
-- **Paper Reading Reports**: Latest AI paper summaries and analysis (`src/blog/blog/papers/`)
+- **Notes**: Daily thoughts and insights in Markdown (`src/blog/blog/note/`)
+- **Paper Reading**: Latest AI paper summaries and analysis (`src/blog/blog/papers/`)
 - **Project Reports**: Development project completion reports (`src/blog/blog/project/`)
 - **Dialog Logs**: Conversation records with AI (`src/blog/blog/dialogs/`)
-- **Implementation Status**: Planning Next.js App Router-based blog system
+- **Implementation Status**: Next.js App Router-based blog system implemented
 
 ### 🐳 Docker Deployment
 - **Full Containerization**: Managed with Docker Compose
@@ -427,8 +427,8 @@ src/
 │   └── page.tsx              # Home page
 ├── blog/blog/                 # Blog Markdown source
 │   ├── intro.md              # Introduction
-│   ├── note/                 # Research notes (8 articles)
-│   ├── papers/               # Paper reading reports (6 articles)
+│   ├── note/                 # Notes (8 articles)
+│   ├── papers/               # Paper reading (6 articles)
 │   ├── project/              # Project reports (1 article)
 │   └── dialogs/              # Dialog logs (2 articles)
 ├── lib/                       # Utility functions
