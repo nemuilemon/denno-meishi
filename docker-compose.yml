@@ -31,8 +31,8 @@ services:
     restart: unless-stopped
     # Cloudflare Tunnel経由でのみアクセス可能にするため、ポートを公開しない
     # ローカルテスト時のみ以下をアンコメント
-    ports:
-      # - "3000:3000"
+    # ports:
+    #   # - "3000:3000"
     environment:
       - NODE_ENV=production
       - DATABASE_URL=postgresql://postgres:${DB_PASSWORD:-Your_Super_Secret_Password}@db:5432/denno_meishi
