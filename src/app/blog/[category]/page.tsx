@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     };
   }
 
-  const displayName = await getCategoryDisplayName(category);
+  const displayName = getCategoryDisplayName(category);
 
   return {
     title: `${displayName} | Blog`,
@@ -39,7 +39,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   }
 
   const posts = await getPostsByCategory(category);
-  const displayName = await getCategoryDisplayName(category);
+  const displayName = getCategoryDisplayName(category);
 
   return (
     <div className="min-h-screen bg-black text-white">

@@ -183,39 +183,35 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 }
 
 /**
- * Get category display name from _index.md file
- * Reads the first h1 heading from each category's _index.md
+ * Get intro content for blog page
+ * Reads intro.md and converts to HTML
  */
-export async function getCategoryDisplayName(category: Category): Promise<string> {
+export async function getIntroContent(): Promise<string | null> {
   try {
-    const indexPath = join(BLOG_DIR, category, '_index.md');
-    const fileContents = await fs.readFile(indexPath, 'utf8');
+    const introPath = join(BLOG_DIR, 'intro.md');
+    const fileContents = await fs.readFile(introPath, 'utf8');
+    const { content } = matter(fileContents);
 
-    // Extract first h1 heading (# Title)
-    const headingMatch = fileContents.match(/^#\s+(.+)$/m);
-    if (headingMatch) {
-      return headingMatch[1].trim();
-    }
-
-    // Fallback to default names if no heading found
-    const fallbackNames: Record<Category, string> = {
-      note: 'ノート',
-      papers: '論文読解',
-      project: 'プロジェクト報告',
-      dialogs: '対話記録',
-    };
-    return fallbackNames[category];
+    const htmlContent = await markdownToHtml(content);
+    return htmlContent;
   } catch (error) {
-    console.warn(`Warning: Could not read _index.md for category "${category}"`, error);
-    // Fallback to default names
-    const fallbackNames: Record<Category, string> = {
-      note: 'ノート',
-      papers: '論文読解',
-      project: 'プロジェクト報告',
-      dialogs: '対話記録',
-    };
-    return fallbackNames[category];
+    console.warn('Warning: Could not read intro.md', error);
+    return null;
   }
+}
+
+/**
+ * Get category display name
+ */
+export function getCategoryDisplayName(category: Category): string {
+  const displayNames: Record<Category, string> = {
+    note: 'ノート',
+    papers: '論文読解',
+    project: 'プロジェクト報告',
+    dialogs: '対話記録',
+  };
+
+  return displayNames[category];
 }
 
 /**

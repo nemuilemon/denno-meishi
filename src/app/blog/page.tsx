@@ -1,37 +1,36 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { getAllPosts, getCategoryDisplayName, type Category } from '@/lib/blog';
+import { getAllPosts, getCategoryDisplayName, getIntroContent, type Category } from '@/lib/blog';
 
 export const metadata: Metadata = {
   title: 'Blog | もうちゃんのブログ',
-  description: '日々の思索、論文読解、プロジェクト報告、対話記録',
+  description: 'AIとの対話を通じて得られた知見と思索をアーカイブする場所',
 };
 
 export default async function BlogPage() {
   const allPosts = await getAllPosts();
+  const introContent = await getIntroContent();
 
   // Group posts by category
   const categories: Category[] = ['note', 'papers', 'project', 'dialogs'];
-  const postsByCategory = await Promise.all(
-    categories.map(async category => ({
-      category,
-      displayName: await getCategoryDisplayName(category),
-      posts: allPosts.filter(post => post.category === category),
-    }))
-  );
+  const postsByCategory = categories.map(category => ({
+    category,
+    displayName: getCategoryDisplayName(category),
+    posts: allPosts.filter(post => post.category === category),
+  }));
 
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="max-w-6xl mx-auto px-4 py-16">
-        {/* Header */}
-        <header className="mb-16">
-          <h1 className="text-5xl font-bold mb-4">
-            📚 ブログ
-          </h1>
-          <p className="text-xl text-gray-400">
-            日々の思索、論文読解、プロジェクト報告、対話記録
-          </p>
-        </header>
+        {/* Intro Section */}
+        {introContent && (
+          <section className="mb-16">
+            <div
+              className="markdown-content prose prose-invert prose-lg max-w-none"
+              dangerouslySetInnerHTML={{ __html: introContent }}
+            />
+          </section>
+        )}
 
         {/* Categories */}
         <div className="space-y-16">
