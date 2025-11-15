@@ -177,10 +177,10 @@ export async function getAllPosts(): Promise<BlogPost[]> {
  */
 export function getCategoryDisplayName(category: Category): string {
   const displayNames: Record<Category, string> = {
-    note: 'Research Notes',
-    papers: 'Paper Reading Reports',
-    project: 'Project Reports',
-    dialogs: 'AI Dialogues',
+    note: 'ノート',
+    papers: '論文読解',
+    project: 'プロジェクト報告',
+    dialogs: '対話記録',
   };
 
   return displayNames[category];

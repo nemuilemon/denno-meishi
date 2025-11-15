@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { getAllPosts, getCategoryDisplayName, type Category } from '@/lib/blog';
 
 export const metadata: Metadata = {
-  title: 'Blog | もうちゃんの研究ノート',
-  description: 'AI研究、論文解読、プロジェクトレポート、AIとの対話記録',
+  title: 'Blog | もうちゃんのブログ',
+  description: '日々の思索、論文読解、プロジェクト報告、対話記録',
 };
 
 export default async function BlogPage() {
@@ -24,10 +24,10 @@ export default async function BlogPage() {
         {/* Header */}
         <header className="mb-16">
           <h1 className="text-5xl font-bold mb-4">
-            📚 研究ノート
+            📚 ブログ
           </h1>
           <p className="text-xl text-gray-400">
-            AI学習の軌跡、論文読解、プロジェクト報告、対話記録
+            日々の思索、論文読解、プロジェクト報告、対話記録
           </p>
         </header>
 
