@@ -9,17 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- Blog system with Next.js App Router
-- Server-side Markdown processing with syntax highlighting
-- Dynamic blog routing (`/blog`, `/blog/[category]`, `/blog/[category]/[slug]`)
-- Markdown content styles with Prism.js dark theme
-- Blog link in homepage navigation
+---
+
+## [0.2.1] - 2025-11-16
+
+### Fixed
+- **Blog Directory Structure**
+  - Updated `BLOG_DIR` constant in `src/lib/blog.ts` from `src/blog/blog` to `src/blog`
+  - Fixed blog content path after directory restructuring
 
 ### Changed
-- Updated documentation to reflect current project state
-- Enhanced architecture documentation with Docker container diagram
-- Updated blog implementation plan with performance optimizations
+- **Documentation Updates**
+  - Updated `docs/plan-2025-11-16.md` with directory structure change history
+  - Updated Content Root Directory path reference
+  - Enhanced Jupyter Book deprecation section with migration status and implementation details
+  - Updated blog content statistics (7 notes, 7 papers)
 
 ---
 

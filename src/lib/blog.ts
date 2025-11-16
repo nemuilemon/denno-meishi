@@ -9,7 +9,7 @@ import rehypePrism from 'rehype-prism-plus';
 import rehypeStringify from 'rehype-stringify';
 
 // Content root directory
-const BLOG_DIR = join(process.cwd(), 'src', 'blog', 'blog');
+const BLOG_DIR = join(process.cwd(), 'src', 'blog');
 
 // Valid blog categories
 export type Category = 'note' | 'papers' | 'project' | 'dialogs';

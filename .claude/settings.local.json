@@ -37,7 +37,8 @@
       "Bash(py:*)",
       "Bash(cmd /c \"rmdir /s /q venv\")",
       "Bash(cmd /c \"rmdir /s /q _build\")",
-      "Bash(cmd /c \"rmdir /s /q src\\blog\\_build\")"
+      "Bash(cmd /c \"rmdir /s /q src\\blog\\_build\")",
+      "Bash(cmd /c \"del src\\blog\\_config.yml\")"
     ],
     "deny": [],
     "ask": []
