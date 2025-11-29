@@ -100,9 +100,18 @@ export async function getPostsByCategory(category: Category): Promise<BlogPost[]
             title = h1Match ? h1Match[1].trim() : slug.replace(/_/g, ' ');
           }
 
-          // Extract date from frontmatter or filename (format: YY-MM-DD_Title)
-          const dateMatch = slug.match(/^(\d{2}-\d{2}-\d{2})/);
-          const date = data.date || (dateMatch ? `20${dateMatch[1]}` : '');
+          // Extract date from frontmatter or filename (format: YYYY-MM-DD or YY-MM-DD)
+          let filenameDate = '';
+          const matchYYYY = slug.match(/^(\d{4}-\d{2}-\d{2})/);
+          const matchYY = slug.match(/^(\d{2}-\d{2}-\d{2})/);
+
+          if (matchYYYY) {
+            filenameDate = matchYYYY[1];
+          } else if (matchYY) {
+            filenameDate = `20${matchYY[1]}`;
+          }
+
+          const date = data.date || filenameDate;
 
           // Create excerpt from content (first 200 characters)
           const excerpt = data.excerpt || content.slice(0, 200).replace(/\n/g, ' ') + '...';
@@ -147,9 +156,18 @@ export async function getPostBySlug(
       title = h1Match ? h1Match[1].trim() : slug.replace(/_/g, ' ');
     }
 
-    // Extract date from frontmatter or filename
-    const dateMatch = slug.match(/^(\d{2}-\d{2}-\d{2})/);
-    const date = data.date || (dateMatch ? `20${dateMatch[1]}` : '');
+    // Extract date from frontmatter or filename (format: YYYY-MM-DD or YY-MM-DD)
+    let filenameDate = '';
+    const matchYYYY = slug.match(/^(\d{4}-\d{2}-\d{2})/);
+    const matchYY = slug.match(/^(\d{2}-\d{2}-\d{2})/);
+
+    if (matchYYYY) {
+      filenameDate = matchYYYY[1];
+    } else if (matchYY) {
+      filenameDate = `20${matchYY[1]}`;
+    }
+
+    const date = data.date || filenameDate;
 
     // Convert Markdown to HTML with syntax highlighting
     const htmlContent = await markdownToHtml(content);
