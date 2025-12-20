@@ -19,7 +19,7 @@ const projects: Project[] = [
     description: '企画からインフラ構築まで、フルスタック開発の全工程を一人で完遂したライフログ・アプリケーション。',
     thumbnailUrl: '/projects/minna-no-himitsukichi/thumbnail.png',
     pdfUrl: '/projects/minna-no-himitsukichi/presentation.pdf',
-    tags: ['React', 'Node.js', 'PostgreSQL', 'Docker', 'VPS']
+    tags: ['React', 'Node.js', 'PostgreSQL']
   },
   {
     id: 'project-compass',
@@ -27,7 +27,7 @@ const projects: Project[] = [
     description: 'RAGアーキテクチャを採用し、過去の膨大な対話ログを知識資産へと変換するAI検索システム。FastAPIとNext.jsによるフルスタック開発。',
     thumbnailUrl: '/projects/project-compass/thumbnail.png',
     pdfUrl: null,
-    tags: ['Python', 'FastAPI', 'Next.js', 'Docker', 'AI', 'RAG']
+    tags: ['Python', 'FastAPI', 'Next.js', 'Docker']
   },
   {
     id: 'a-n-c',
@@ -35,7 +35,15 @@ const projects: Project[] = [
     description: 'PythonとFletフレームワークを用い、UI設計からフルスクラッチで開発したデスクトップアプリケーション。外部LLM APIと連携し、快適な対話環境を実現。',
     thumbnailUrl: '/projects/anc/thumbnail.png',
     pdfUrl: null,
-    tags: ['Python', 'Flet', 'AI', 'デスクトップアプリ']
+    tags: ['Python', 'Flet']
+  },
+  {
+    id: 'project-ask-mirai',
+    title: 'Project ASK MIRAI',
+    description: 'オープンキャンパス体験創出プロジェクト。学生主体の対話型AI Q&Aシステム。来校者が自然言語で質問でき、学校の公式情報に基づいた正確な回答を提供します。',
+    thumbnailUrl: '/projects/Project-ASK-MIRAI/thumbnail.png',
+    pdfUrl: '/projects/Project-ASK-MIRAI/presentation.pdf',
+    tags: ['Next.js', 'PyTorch (Local LLM)', 'FastAPI', 'Docker']
   }
 ];
 
