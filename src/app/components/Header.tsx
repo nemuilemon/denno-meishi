@@ -48,14 +48,7 @@ export default function Header() {
                   ブログ
                 </a>
               </li>
-              <li>
-                <a
-                  href="#contact"
-                  className="text-gray-300 hover:text-blue-400 transition-colors"
-                >
-                  お問い合わせ
-                </a>
-              </li>
+
             </ul>
           </nav>
 
@@ -108,15 +101,7 @@ export default function Header() {
                   ブログ
                 </a>
               </li>
-              <li>
-                <a
-                  href="#contact"
-                  onClick={closeMenu}
-                  className="block py-2 text-gray-300 hover:text-blue-400 transition-colors"
-                >
-                  お問い合わせ
-                </a>
-              </li>
+
             </ul>
           </nav>
         )}

@@ -1,27 +1,4 @@
 services:
-  # PostgreSQLデータベース
-  db:
-    image: postgres:16
-    container_name: denno_meishi_db
-    restart: unless-stopped
-    shm_size: 128mb
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=${DB_PASSWORD:-Your_Super_Secret_Password}
-      - POSTGRES_DB=denno_meishi
-    # ports:
-    #   - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - denno_network
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
   # Next.jsアプリケーション
   app:
     build:
@@ -35,16 +12,10 @@ services:
     #   # - "3000:3000"
     environment:
       - NODE_ENV=production
-      - DATABASE_URL=postgresql://postgres:${DB_PASSWORD:-Your_Super_Secret_Password}@db:5432/denno_meishi
       - ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin_password}
-    depends_on:
-      db:
-        condition: service_healthy
     networks:
       - denno_network
-    volumes:
-      - ./prisma:/app/prisma
 
   # Cloudflare Tunnel
   cloudflared:
@@ -59,10 +30,6 @@ services:
       - denno_network
     depends_on:
       - app
-
-volumes:
-  postgres_data:
-    driver: local
 
 networks:
   denno_network:

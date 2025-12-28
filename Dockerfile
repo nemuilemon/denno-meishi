@@ -14,8 +14,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Prisma クライアントの生成（オフライン環境対応）
-ENV PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING=1
-RUN npx prisma generate
+
 
 # Next.jsのプロダクションビルド
 ENV NEXT_TELEMETRY_DISABLED=1
@@ -37,8 +36,7 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 # Prisma Clientの生成物をコピー
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
-COPY --from=builder /app/prisma ./prisma
+
 
 USER nextjs
 

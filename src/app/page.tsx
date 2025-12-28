@@ -3,7 +3,7 @@ import Profile from './components/Profile';
 import Showcase from './components/Showcase';
 import Blog from './components/Blog';
 import Footer from './components/Footer';
-import ContactForm from './components/ContactForm';
+
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
         <Profile />
         <Showcase />
         <Blog />
-        <ContactForm />
+
       </main>
       <Footer />
     </div>
