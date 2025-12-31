@@ -25,8 +25,8 @@ const projects: Project[] = [
     id: 'project-alice',
     title: '自作RAG搭載AIパートナー「ありす」',
     description: '「Vibe Coding」により、AIを単なるツールから「共に進化するパートナー」へと昇華させたプロジェクト。自作RAG「Compass」による長期記憶、Android/Web展開、完全自律インフラの構築を通じ、AIとの共生を目指す。',
-    thumbnailUrl: '/projects/project-alice/thumbnail.png',
-    pdfUrl: '/projects/project-alice/presentation.pdf',
+    thumbnailUrl: '/projects/Project-Alice/thumbnail.png',
+    pdfUrl: '/projects/Project-Alice/presentation.pdf',
     tags: ['Next.js', 'FastAPI', 'RAG (Embedding + LanceDB)', 'Docker']
   },
   {
