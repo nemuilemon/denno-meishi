@@ -22,20 +22,12 @@ const projects: Project[] = [
     tags: ['React', 'Node.js', 'PostgreSQL']
   },
   {
-    id: 'project-compass',
-    title: '記憶検索エンジン『追憶のコンパス』',
-    description: 'RAGアーキテクチャを採用し、過去の膨大な対話ログを知識資産へと変換するAI検索システム。FastAPIとNext.jsによるフルスタック開発。',
-    thumbnailUrl: '/projects/project-compass/thumbnail.png',
-    pdfUrl: null,
-    tags: ['Python', 'FastAPI', 'Next.js', 'Docker']
-  },
-  {
-    id: 'a-n-c',
-    title: 'AI対話クライアント『Alice Nexus Core』',
-    description: 'PythonとFletフレームワークを用い、UI設計からフルスクラッチで開発したデスクトップアプリケーション。外部LLM APIと連携し、快適な対話環境を実現。',
-    thumbnailUrl: '/projects/anc/thumbnail.png',
-    pdfUrl: null,
-    tags: ['Python', 'Flet']
+    id: 'project-alice',
+    title: '自作RAG搭載AIパートナー「ありす」',
+    description: '「Vibe Coding」により、AIを単なるツールから「共に進化するパートナー」へと昇華させたプロジェクト。自作RAG「Compass」による長期記憶、Android/Web展開、完全自律インフラの構築を通じ、AIとの共生を目指す。',
+    thumbnailUrl: '/projects/project-alice/thumbnail.png',
+    pdfUrl: '/projects/project-alice/presentation.pdf',
+    tags: ['Next.js', 'FastAPI', 'RAG (Embedding + LanceDB)', 'Docker']
   },
   {
     id: 'project-ask-mirai',
