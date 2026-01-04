@@ -32,7 +32,7 @@ const projects: Project[] = [
   {
     id: 'project-ask-mirai',
     title: 'Project ASK MIRAI',
-    description: 'オープンキャンパス体験創出プロジェクト。学生主体の対話型AI Q&Aシステム。来校者が自然言語で質問でき、学校の公式情報に基づいた正確な回答を提供します。',
+    description: 'オープンキャンパス体験創出プロジェクト。学生主体の対話型AI Q&Aシステム。来校者が自然言語で質問、学校の公式情報に基づいた正確な回答を提供します。',
     thumbnailUrl: '/projects/Project-ASK-MIRAI/thumbnail.png',
     pdfUrl: '/projects/Project-ASK-MIRAI/presentation.pdf',
     tags: ['Next.js', 'PyTorch (Local LLM)', 'FastAPI', 'Docker']
