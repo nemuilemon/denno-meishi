@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,28 +26,36 @@ export default function Header() {
           <nav className="hidden md:block">
             <ul className="flex space-x-8">
               <li>
-                <a
-                  href="#profile"
+                <Link
+                  href="/#profile"
                   className="text-gray-300 hover:text-blue-400 transition-colors"
                 >
                   私について
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#showcase"
+                <Link
+                  href="/#showcase"
                   className="text-gray-300 hover:text-blue-400 transition-colors"
                 >
                   実績
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#blog"
+                <Link
+                  href="/#blog"
                   className="text-gray-300 hover:text-blue-400 transition-colors"
                 >
                   ブログ
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/tools"
+                  className="text-gray-300 hover:text-cyan-400 transition-colors duration-200"
+                >
+                  ツール集
+                </Link>
               </li>
 
             </ul>
@@ -75,31 +84,40 @@ export default function Header() {
           <nav className="md:hidden mt-4 py-2 border-t border-gray-200 dark:border-gray-700">
             <ul className="flex flex-col space-y-2">
               <li>
-                <a
-                  href="#profile"
+                <Link
+                  href="/#profile"
                   onClick={closeMenu}
                   className="block py-2 text-gray-300 hover:text-blue-400 transition-colors"
                 >
                   私について
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#showcase"
+                <Link
+                  href="/#showcase"
                   onClick={closeMenu}
                   className="block py-2 text-gray-300 hover:text-blue-400 transition-colors"
                 >
                   実績
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#blog"
+                <Link
+                  href="/#blog"
                   onClick={closeMenu}
                   className="block py-2 text-gray-300 hover:text-blue-400 transition-colors"
                 >
                   ブログ
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/tools"
+                  onClick={closeMenu}
+                  className="block py-2 text-gray-300 hover:text-cyan-400 transition-colors duration-200"
+                >
+                  ツール集
+                </Link>
               </li>
 
             </ul>

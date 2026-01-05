@@ -37,15 +37,32 @@ export default function ParticleBackground() {
   useEffect(() => {
     const interval = setInterval(() => {
       setParticles(prevParticles =>
-        prevParticles.map(particle => ({
-          ...particle,
-          x: particle.x + particle.speedX < 0 || particle.x + particle.speedX > 100
-            ? particle.x - particle.speedX
-            : particle.x + particle.speedX,
-          y: particle.y + particle.speedY < 0 || particle.y + particle.speedY > 100
-            ? particle.y - particle.speedY
-            : particle.y + particle.speedY,
-        }))
+        prevParticles.map(particle => {
+          // まず普通に移動させる
+          const nextX = particle.x + particle.speedX;
+          const nextY = particle.y + particle.speedY;
+
+          // 画面外（-10% ～ 110% の範囲外）に出たらリセットする
+          const isOutside = nextX < -10 || nextX > 110 || nextY < -10 || nextY > 110;
+
+          if (isOutside) {
+            return {
+              ...particle,
+              // 画面内のランダムな位置に再配置
+              // (完全にランダムだとパッと現れるので、気になる場合は opacity を操作するか、
+              //  画面外から入ってくるように座標計算を工夫しますが、まずはこれで十分自然です)
+              x: Math.random() * 100,
+              y: Math.random() * 100,
+            };
+          }
+
+          // 範囲内ならそのまま移動
+          return {
+            ...particle,
+            x: nextX,
+            y: nextY,
+          };
+        })
       );
     }, 100);
 
@@ -53,7 +70,14 @@ export default function ParticleBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+    <div
+      className="fixed inset-0 -z-10 pointer-events-none overflow-hidden"
+      style={{
+        // 画面の端に行くほど透明になるマスクを適用
+        maskImage: 'radial-gradient(circle at center, black 60%, transparent 100%)',
+        WebkitMaskImage: 'radial-gradient(circle at center, black 60%, transparent 100%)',
+      }}
+    >
       {particles.map(particle => (
         <div
           key={particle.id}
