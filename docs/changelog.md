@@ -9,6 +9,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-01-06
+
+### Added
+- **Toolbox Section** (`/tools`)
+  - Index page for experimental tools
+  - **Clock Tool**: Real-time digital clock with immersive design
+  - Shared layout architecture
+- **UI Components**
+  - **Showcase**: Project portfolio display component
+  - **Footer**: Site-wide footer
+  - **ParticleBackground**: Interactive background effect
+- **Analytics**
+  - Google Analytics 4 (GA4) integration
+
+### Changed
+- **Content Structure**
+  - Expanded blog contents with new notes and dialogs (Dec 2025)
+  - Enhanced blog content management utilities
+
+### Removed
+- **Contact System**
+  - Removed Contact Form component
+  - Removed associated API routes and database models
+
 ---
 
 ## [0.2.1] - 2025-11-16
@@ -161,9 +185,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Current Features
 - ✅ Landing page with portfolio sections
-- ✅ Contact form with database persistence
-- ✅ Admin interface with Basic Auth
-- ✅ Blog system with 17+ articles
+- ✅ Blog system with 24+ articles
+- ✅ Toolbox section with experimental utilities
+- ✅ Interactive background (Particles)
+- ✅ Google Analytics 4 integration
 - ✅ Docker deployment with Cloudflare Tunnel
 - ✅ Dark mode theme
 - ✅ Responsive design
@@ -172,18 +197,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Framework**: Next.js 15.5.3 (App Router)
 - **Runtime**: Node.js 20
 - **Language**: TypeScript 5
-- **Database**: PostgreSQL 16
-- **ORM**: Prisma ^6.16.2
 - **Styling**: Tailwind CSS v4
 - **Containerization**: Docker & Docker Compose
 - **Infrastructure**: Cloudflare Tunnel
+- **Analytics**: Google Analytics 4
 
 ### Content Statistics
-- **Total Blog Posts**: 17 articles
-  - Research Notes: 8
-  - Paper Reports: 6
+- **Total Blog Posts**: 24 articles
+  - Research Notes: 12
+  - Paper Reports: 8
   - Project Reports: 1
-  - Dialogue Logs: 2
+  - Dialogue Logs: 3
 
 ---
 

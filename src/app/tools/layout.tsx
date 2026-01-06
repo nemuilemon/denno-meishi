@@ -1,5 +1,3 @@
-import Header from '../components/Header';
-
 export default function ToolsLayout({
     children,
 }: {
@@ -7,7 +5,6 @@ export default function ToolsLayout({
 }) {
     return (
         <>
-            <Header />
             {children}
         </>
     );

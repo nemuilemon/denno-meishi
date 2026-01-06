@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Header from '../components/Header';
 
 const tools = [
     {
@@ -27,6 +28,7 @@ const tools = [
 export default function ToolsIndex() {
     return (
         <div className="min-h-screen pt-24 pb-12 px-6 bg-gray-950 text-white font-sans">
+            <Header />
             <div className="max-w-4xl mx-auto">
                 <h1 className="text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
                     Toolbox <span className="text-sm text-gray-500 font-normal ml-2">Experimental Utilities</span>
@@ -38,8 +40,8 @@ export default function ToolsIndex() {
                             key={tool.name}
                             href={tool.active ? tool.href : '#'}
                             className={`block p-6 rounded-xl border transition-all duration-300 ${tool.active
-                                    ? 'bg-gray-900 border-gray-700 hover:border-cyan-500 hover:shadow-[0_0_20px_rgba(6,182,212,0.2)] cursor-pointer'
-                                    : 'bg-gray-900/50 border-gray-800 opacity-50 cursor-not-allowed'
+                                ? 'bg-gray-900 border-gray-700 hover:border-cyan-500 hover:shadow-[0_0_20px_rgba(6,182,212,0.2)] cursor-pointer'
+                                : 'bg-gray-900/50 border-gray-800 opacity-50 cursor-not-allowed'
                                 }`}
                         >
                             <div className="text-4xl mb-4">{tool.icon}</div>
