@@ -1,13 +1,5 @@
----
-title: "ReAct: Synergizing Reasoning and Acting in Language Models"
-date: "2026-01-08"
-slug: "react"
-category: "papers"
-tags: ["LLM", "Agent", "PromptEngineering", "ReAct"]
-description: "推論と行動を組み合わせたLLMプロンプティング手法「ReAct」についての論文読解レポート。"
----
+# ReAct: Synergizing Reasoning and Acting in Language Models
 
-## 出典
 [https://arxiv.org/abs/2210.03629](https://arxiv.org/abs/2210.03629)
 
 ## 1. 論文の概要 (Executive Summary)
