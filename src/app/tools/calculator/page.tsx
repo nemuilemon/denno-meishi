@@ -189,10 +189,10 @@ export default function CalculatorPage() {
                     <Button onClick={handleDecimal}>.</Button>
                 </div>
 
-                <div className="mt-8 text-center">
+                <div className="mt-12 z-10 text-center">
                     <Link
                         href="/tools"
-                        className="inline-flex items-center text-sm text-gray-500 hover:text-cyan-400 transition-colors"
+                        className="px-6 py-2 border border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/20 transition-all rounded"
                     >
                         ← Back to Tools
                     </Link>

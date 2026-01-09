@@ -23,11 +23,25 @@ const tools = [
         active: true,
         icon: '🧮',
     },
+    {
+        name: 'Pomodoro',
+        description: '25分+5分の集中タイマー',
+        href: '/tools/pomodoro',
+        active: true,
+        icon: '🍅',
+    },
+    {
+        name: 'QR Generator',
+        description: 'URLをQRコードに変換',
+        href: '/tools/qr',
+        active: true,
+        icon: '📱',
+    },
 ];
 
 export default function ToolsIndex() {
     return (
-        <div className="min-h-screen pt-24 pb-12 px-6 bg-gray-950 text-white font-sans">
+        <div className="min-h-screen pt-24 pb-12 px-6 bg-black text-white">
             <Header />
             <div className="max-w-4xl mx-auto">
                 <h1 className="text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
