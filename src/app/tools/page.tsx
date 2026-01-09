@@ -37,6 +37,13 @@ const tools = [
         active: true,
         icon: '📱',
     },
+    {
+        name: 'Timer',
+        description: 'シンプルなカウントダウン',
+        href: '/tools/timer',
+        active: true,
+        icon: '⏲️',
+    },
 ];
 
 export default function ToolsIndex() {
