@@ -12,15 +12,15 @@ const tools = [
     {
         name: 'Roulette',
         description: '運命を決めるランダムルーレット',
-        href: '#',
-        active: false, // まだ実装していないのでfalse
+        href: '/tools/roulette',
+        active: true,
         icon: '🎰',
     },
     {
         name: 'Calculator',
         description: 'シンプルな電卓ツール',
-        href: '#',
-        active: false,
+        href: '/tools/calculator',
+        active: true,
         icon: '🧮',
     },
 ];
